@@ -1,23 +1,23 @@
 
 console.log('welcome alarm')
-const hourE = document.getElementById('hours');
-const minuteE = document.getElementById('minutes');
-const secondE = document.getElementById('second');
-const ampmE = document.getElementById('ampm');
-const monthEl = document.getElementById('month');
-const weekdayEl = document.getElementById('weekday');
-const dayEl = document.getElementById('day');
-const now = new Date();
+const hourE = document.getElementById('hours');  //acessing the hour element from frontend to dispaly the clock
+const minuteE = document.getElementById('minutes');//acessing the minutes element from frontend to dispaly the clock
+const secondE = document.getElementById('second');//acessing the seconds element from frontend to dispaly the clock
+const ampmE = document.getElementById('ampm'); //acessing the ampm element from frontend to dispaly the clock
+const monthEl = document.getElementById('month');//acessing the mont element from frontend to dispaly the clock
+const weekdayEl = document.getElementById('weekday');//acessing the weekday element from frontend to dispaly the clock
+const dayEl = document.getElementById('day'); 
+const now = new Date();  
 const options = { weekday: 'long' };
 const options1 = { month: 'long' };
 const options2 = { day: 'numeric' };
 const weekday = now.toLocaleString('en-US', options);
 const month = now.toLocaleString('en-US', options1);
 const day = now.toLocaleString('en-US', options2);
-var Alarm = [];
+var Alarm = [];//making a empty array to hold the alarm list
 
-const AlarmLS=JSON.parse( localStorage.getItem('Alarm'));
-Alarm=AlarmLS;
+const AlarmLS=JSON.parse( localStorage.getItem('Alarm'));//checing in local storage for previous alarms
+Alarm=AlarmLS;//putting the alarms from local storage to a array Alarm
 
 
 
@@ -25,25 +25,25 @@ Alarm=AlarmLS;
 
 
 function updateClock() {
-    let h = new Date().getHours();
-    let m = new Date().getMinutes();
-    let s = new Date().getSeconds();
+    let h = new Date().getHours();//fetching current hours
+    let m = new Date().getMinutes();//fetching current min
+    let s = new Date().getSeconds();//fetchin current seconds
 
 //working to ring the alarm
-    weekdayEl.innerText = weekday;
-    monthEl.innerText = month;
-    dayEl.innerText = day;
+    weekdayEl.innerText = weekday;//diplaying the weeday 
+    monthEl.innerText = month;// displaying the month 
+    dayEl.innerText = day;//displaying the day 
     let ampm = 'am';
-    if(h>=12){
+    if(h>=12){    //checking whether its am or pm
 ampm='pm';
     }
     if (h > 12) {
-        h = h - 12;     
+        h = h - 12;     //managing to display the hour in 12 hours format
     }
   Alarm.forEach(element=>{
         if(h==Number(element.hours)&&m==Number(element.minutes)&&s==Number(element.seconds-3)&&ampm===element.zone){   
             const alertSound = document.getElementById("alert-sound");
-            alertSound.play();
+            alertSound.play();//playing the alarm sound when alarm initiate
 
                 function delayedExecution() {
                     console.log("This code will be executed after a 5-second delay.");
@@ -52,7 +52,7 @@ ampm='pm';
                     alertSound.pause();
                     alertSound.currentTime=0;
                   }
-            setTimeout(delayedExecution,3000);   
+            setTimeout(delayedExecution,3000);   //making delay to get the time to buffer the song to audio element
         }
     })
     hourE.innerText =`${h}:` ;
@@ -60,13 +60,15 @@ ampm='pm';
     secondE.innerText = s;
     ampmE.innerText = ampm;
 }
-setInterval(updateClock, 1000);
+
+
+setInterval(updateClock, 1000);//calling the updateClock for every second 
 
 const updateList=()=>{
     const alarmList=document.getElementById('alarm-list-container');
     alarmList.innerHTML='';
 
-    Alarm.forEach(element=>{
+    Alarm.forEach(element=>{ //iterating over the Alarm to display each alarm in the list
         const newEl=document.createElement('div');
         newEl.className='alarm'
         newEl.innerHTML=`<div class="alarm-dec">
@@ -88,11 +90,11 @@ const handleSubmit = (event) => {
     const minutesA = document.getElementById('minutesA');
     const hoursA = document.getElementById('hoursA');
     const zoneA = document.getElementById('zoneA');
-    if(Number(secondsA.value)>60||Number(hoursA.value)>12||Number(minutesA.value)>60){
+    if(Number(secondsA.value)>60||Number(hoursA.value)>12||Number(minutesA.value)>60){   //handling the invalid input while creating a Alarm
         alert('invalid time input')
         return;
     }
-    let newalarm = {
+    let newalarm = {   //if alarm input valid then creating the alarm object in Alarm array
         id:Date.now(),
         hours: hoursA.value,
         minutes: minutesA.value,
@@ -114,7 +116,7 @@ const handleSubmit = (event) => {
 
 // working on add alarm function to show the pop 
 
-const toggle = () => {
+const toggle = () => {   //toggle the create alarm form
     toggelEl.classList.toggle('active');
 
     console.log('you have click the add buttion');
@@ -129,16 +131,16 @@ addAlarmEl.addEventListener('click', function (event) {
 });
 
 
-function deleteAlarm(event){
+function deleteAlarm(event){   
     event.preventDefault();
 console.log(event.target.id);
-let deleted=Alarm.filter(function(element){
+let deleted=Alarm.filter(function(element){  //filtering all the alarm expect delete alarm 
     return element.id!=event.target.id;
 })
 console.log('your delete list is',deleted);
 Alarm=deleted;
 let newArray=JSON.stringify(Alarm);
-localStorage.setItem('Alarm',newArray);
+localStorage.setItem('Alarm',newArray);//again storing the all alarm to local storage for persistance
 
 updateList();
 }
