@@ -40,21 +40,28 @@ ampm='pm';
     if (h > 12) {
         h = h - 12;     //managing to display the hour in 12 hours format
     }
-  Alarm.forEach(element=>{
-        if(h==Number(element.hours)&&m==Number(element.minutes)&&s==Number(element.seconds-3)&&ampm===element.zone){   
-            const alertSound = document.getElementById("alert-sound");
-            alertSound.play();//playing the alarm sound when alarm initiate
 
-                function delayedExecution() {
-                    console.log("This code will be executed after a 5-second delay.");
-                   
-                    alert(`your time ${element.hours}:${element.minutes}:${element.seconds} ${element.zone}`);
-                    alertSound.pause();
-                    alertSound.currentTime=0;
-                  }
-            setTimeout(delayedExecution,3000);   //making delay to get the time to buffer the song to audio element
-        }
-    })
+
+    if(Alarm!=null){
+
+        Alarm.forEach(element=>{
+            if(h==Number(element.hours)&&m==Number(element.minutes)&&s==Number(element.seconds-3)&&ampm===element.zone){   
+                const alertSound = document.getElementById("alert-sound");
+                alertSound.play();//playing the alarm sound when alarm initiate
+    
+                    function delayedExecution() {
+                        console.log("This code will be executed after a 5-second delay.");
+                       
+                        alert(`your time ${element.hours}:${element.minutes}:${element.seconds} ${element.zone}`);
+                        alertSound.pause();
+                        alertSound.currentTime=0;
+                      }
+                setTimeout(delayedExecution,3000);   //making delay to get the time to buffer the song to audio element
+            }
+        })
+
+    }
+
     hourE.innerText =`${h}:` ;
     minuteE.innerText =`${m}:`;
     secondE.innerText = s;
@@ -67,6 +74,8 @@ setInterval(updateClock, 1000);//calling the updateClock for every second
 const updateList=()=>{
     const alarmList=document.getElementById('alarm-list-container');
     alarmList.innerHTML='';
+if(Alarm!=null){
+
 
     Alarm.forEach(element=>{ //iterating over the Alarm to display each alarm in the list
         const newEl=document.createElement('div');
@@ -78,6 +87,9 @@ const updateList=()=>{
     <div class="alarm-delete" onclick="deleteAlarm(event)"><i class="fa-solid fa-trash" id="${element.id}" ></i></div>`
     alarmList.appendChild(newEl);
     })
+
+}
+ 
 
 }
 
