@@ -48,7 +48,7 @@ ampm='pm';
     if(Alarm!=null){
 
         Alarm.forEach(element=>{
-            if(h==Number(element.hours)&&m==Number(element.minutes)&&s==Number(element.seconds-3)&&ampm===element.zone){   
+            if(h==Number(element.hours)&&m==Number(element.minutes)&&s==Number(element.seconds)&&ampm===element.zone){   
                 const alertSound = document.getElementById("alert-sound");
                 alertSound.play();//playing the alarm sound when alarm initiate
     
@@ -59,7 +59,7 @@ ampm='pm';
                         alertSound.pause();
                         alertSound.currentTime=0;
                       }
-                setTimeout(delayedExecution,3000);   //making delay to get the time to buffer the song to audio element
+                setTimeout(delayedExecution,1000);   //making delay to get the time to buffer the song to audio element
             }
         })
 
