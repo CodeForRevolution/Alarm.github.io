@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="alarm.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<body>
+
+    <div class="page">
+        <div id="alarm-container" class="alarm-container ">
+            <div class="header">
+                <div class="logo">clock</div>
+                <div class="option"><i class="fa-solid fa-ellipsis fa-rotate-90"></i></div>
+            </div>
+            <div class="clock-container">
+                <div class="clock">
+                    <span id="hours">0</span>
+                    <span id="minutes">0</span>
+                    <span id="second">0</span>
+                    <span id="ampm">Am</span>
+                </div>
+                <div class="dec">
+                    <span id="weekday">Wednesday</span>
+                    <span id="month">September</span>
+                    <span id="day">8</span>
+                </div>
+            </div>
+
+            <div class="alarm-list-container" id="alarm-list-container">
+                <!-- <div class="alarm"> 
+                    <div class="alarm-dec">
+                        <i class="fa-solid fa-bell"></i>
+                    </div>
+                    <div class="alarm-time"><span>10</span><span>55</span><span>55</span><span>am</span></div>
+                    <div class="alarm-delete"><i class="fa-solid fa-trash"></i></div>
+                </div>
+              -->
+               
+             
+         
+              
+            </div>
+            <div id="add-alarm" class="add-alarm">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <div class="footer">
+                <div class="footer-left"><i class="fa-regular fa-clock"></i></div>
+                <div class="footer-right"><i class="fa-regular fa-hourglass "></i></div>
+            </div>
+
+
+            <div class="create">
+                <form action="">
+              <div>Hours: <input type="number" name="hour" id="hoursA"></div>
+               <div>Minutes: <input type="number" name="minutes" id="minutesA"></div>
+               <div>Seconds:<input type="number" name="seconds" id="secondsA"></div>
+               <div><select name="zone" id="zoneA">
+                <option value="am">AM</option>
+                <option value="pm">PM</option>
+               </select></div>
+                <button  class='submit' type="submit" onclick="handleSubmit(event)">Add Alarm</button>
+                </form>
+             </div>
+        </div>
+
+       
+    </div>
+    </div>
+    <audio id="alert-sound" src="./love.wav"></audio>
+    <script src="./alarm.js"></script>
+
+</body>
+
+</html>
