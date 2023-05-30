@@ -18,6 +18,9 @@ var Alarm = [];//making a empty array to hold the alarm list
 
 const AlarmLS=JSON.parse( localStorage.getItem('Alarm'));//checing in local storage for previous alarms
 Alarm=AlarmLS;//putting the alarms from local storage to a array Alarm
+if(Alarm==null){
+    Alarm=[];
+}
 
 
 
