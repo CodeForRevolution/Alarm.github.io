@@ -105,7 +105,7 @@ const handleSubmit = (event) => {
     const minutesA = document.getElementById('minutesA');
     const hoursA = document.getElementById('hoursA');
     const zoneA = document.getElementById('zoneA');
-    if(Number(secondsA.value)>60||Number(hoursA.value)>12||Number(minutesA.value)>60){   //handling the invalid input while creating a Alarm
+    if(Number(secondsA.value)>60||!secondsA.value||Number(hoursA.value)>12||!hoursA.value||Number(minutesA.value)>60||!minutesA.value){   //handling the invalid input while creating a Alarm
         alert('invalid time input')
         return;
     }

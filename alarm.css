@@ -3,7 +3,7 @@ body{
     height: 100wh;
     background-color: green;
     margin: 0;
-    font-size:30px;
+    font-size:20px;
     padding: 0;
 }
 
@@ -15,15 +15,66 @@ body{
 .page{
     width:100vw;
     height: 100vh;
-    background-color: black;
+   background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .alarm-container{
     width: 100vw;
-    height: 100vh;
+    height: 100vh;    
  background-color: black;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+
+
+.active .create{
+    top: 50%;
+    font-size: 30px;
+    width: 80%;
+    position: fixed;
+    background-color:#737373;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    color: white;
+    transform: translatex(50%);
+    right: 50%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    padding-right: 7px;
+    padding-top: 7px;
+}
+
+@media only screen and (min-width: 800px) {
+    .alarm-container {
+  width:55%;
+    }
+
+    .active .create{
+        top: 50%;
+        font-size: 30px;
+        width:40%;
+        height:auto;
+        position: fixed;
+        background-color:gray;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+        color: white;
+        transform: translatex(50%);
+        right: 50%;
+        box-sizing: border-box;
+        border-radius: 20px;
+        padding-right: 7px;
+        padding-top: 7px;
+    }
+  }
 
 *{
     margin: 0;
@@ -46,6 +97,7 @@ body{
     color: white;
     width: 50%;
     height: 100%;
+    font-size: 29px;
 display:flex;
 justify-content:center;
 }
@@ -59,12 +111,12 @@ justify-content:center;
 }
 
 
-
 .clock-container{
     width: 100%;
     height: 25%; 
     display: flex;
     flex-direction: column;
+ 
 }
 .clock{
     width: 100%;
@@ -241,28 +293,10 @@ select{
     border: 2px solid black;
     border-radius:20px;
 }
-.active .create{
-    top: 50%;
-    font-size: 30px;
-    width: 80%;
-    height: 25%;
-    position: fixed;
-    background-color:#737373;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
-    color: white;
-    transform: translatex(50%);
-    right: 50%;
-    box-sizing: border-box;
-    border-radius: 20px;
-    padding-right: 7px;
-    padding-top: 7px;
-}
+
 form input{
     border-radius: 20px;
-    border: 2px solid black;
+   width: 50%;
 }
 form div{
     width: 100%;
@@ -277,9 +311,7 @@ form{
     flex-direction: column;
     width: 100%;
     height: 100%;
-   align-items: center;
- 
-   
+   align-items: center; 
     
 }
 .submit{
